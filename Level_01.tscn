@@ -1,0 +1,226 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://texture/ball.jpg" type="Texture" id=2]
+[ext_resource path="res://texture/grass.jpg" type="Texture" id=3]
+[ext_resource path="res://style/default.tres" type="Theme" id=4]
+[ext_resource path="res://DeathZone.gd" type="Script" id=5]
+[ext_resource path="res://mainmenu.gd" type="Script" id=6]
+[ext_resource path="res://VictoryZone.gd" type="Script" id=7]
+
+[sub_resource type="SpatialMaterial" id=9]
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="PlaneMesh" id=1]
+material = SubResource( 9 )
+size = Vector2( 2, 20 )
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 1, 1, 0.498178 )
+
+[sub_resource type="CubeMesh" id=10]
+
+[sub_resource type="BoxShape" id=11]
+
+[sub_resource type="CubeMesh" id=14]
+
+[sub_resource type="BoxShape" id=15]
+
+[sub_resource type="SphereShape" id=2]
+radius = 0.204664
+
+[sub_resource type="SphereMesh" id=4]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="SpatialMaterial" id=8]
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="BoxShape" id=12]
+extents = Vector3( 1, 0.110117, 1 )
+
+[sub_resource type="BoxShape" id=13]
+extents = Vector3( 0.921739, 1, 0.0774655 )
+
+[node name="Level_01" type="Spatial"]
+
+[node name="Menu" type="CanvasLayer" parent="."]
+pause_mode = 2
+script = ExtResource( 6 )
+
+[node name="Control" type="Control" parent="Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+theme = ExtResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Control"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = -96.0
+margin_top = -10.0
+margin_right = 138.0
+margin_bottom = 121.0
+
+[node name="Play" type="Button" parent="Menu/Control/VBoxContainer"]
+margin_right = 234.0
+margin_bottom = 41.0
+text = "Начать"
+
+[node name="Score" type="Button" parent="Menu/Control/VBoxContainer"]
+margin_top = 45.0
+margin_right = 234.0
+margin_bottom = 86.0
+text = "Статистика"
+
+[node name="Quit" type="Button" parent="Menu/Control/VBoxContainer"]
+margin_top = 90.0
+margin_right = 234.0
+margin_bottom = 131.0
+text = "Выйти"
+
+[node name="Score" type="VBoxContainer" parent="Menu"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -203.0
+margin_top = -20.0
+margin_right = 203.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Message" type="Label" parent="Menu/Score"]
+margin_right = 406.0
+margin_bottom = 35.0
+theme = ExtResource( 4 )
+text = "Выйграли"
+align = 1
+
+[node name="ScoreLabel" type="Label" parent="Menu/Score"]
+margin_top = 39.0
+margin_right = 406.0
+margin_bottom = 74.0
+theme = ExtResource( 4 )
+
+[node name="Back" type="Button" parent="Menu/Score"]
+margin_top = 78.0
+margin_right = 406.0
+margin_bottom = 119.0
+theme = ExtResource( 4 )
+text = "Назад"
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.72532 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 0.0189887, 0, 0, 0, 20, 0, 0, 0 )
+shape = SubResource( 7 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( 0.0917101, 0, 0, 0, 0.567478, 0, 0, 0, 0.295639, -0.890323, 0.586466, -18.4185 )
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance2/StaticBody"]
+shape = SubResource( 11 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="."]
+transform = Transform( 0.0917101, 0, 0, 0, 0.567478, 0, 0, 0, 0.295639, 0.906384, 0.586466, -18.4185 )
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance3/StaticBody"]
+shape = SubResource( 11 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="."]
+transform = Transform( 0.0808068, 0, 0, 0, 0.138939, 0, 0, 0, 1, -0.915912, 0.157929, 0.26847 )
+mesh = SubResource( 14 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance4"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance4/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 15 )
+
+[node name="MeshInstance5" type="MeshInstance" parent="."]
+transform = Transform( 0.0808068, 0, 0, 0, 0.138939, 0, 0, 0, 1, 0.898685, 0.157929, 0.26847 )
+mesh = SubResource( 14 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance5"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance5/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 15 )
+
+[node name="MeshInstance6" type="MeshInstance" parent="."]
+transform = Transform( -3.22912e-09, 0, 0.914202, 0, 0.138939, 0, -0.0808068, 0, -4.37114e-08, -0.0153636, 0.157929, 1.18712 )
+mesh = SubResource( 14 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance6"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance6/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 15 )
+
+[node name="Player" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.237831, 0.504013 )
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Player"]
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Player"]
+transform = Transform( 1.00096, 0, 0, 0, 1.00096, 0, 0, 0, 1.00096, 0, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 8 )
+
+[node name="CameraRig" type="Position3D" parent="Player"]
+
+[node name="Camera" type="Camera" parent="Player/CameraRig"]
+transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 1.05279, 1.27998 )
+current = true
+
+[node name="DeathZone" type="Area" parent="."]
+script = ExtResource( 5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="DeathZone"]
+transform = Transform( 18.1713, 0, 0, 0, 1, 0, 0, 0, 29.6314, -0.116326, -0.109795, -8.43352 )
+shape = SubResource( 12 )
+
+[node name="VictoryZone" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, -3.24793e-05, 0, 0, -18.1298 )
+script = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="VictoryZone"]
+transform = Transform( 0.869611, 0, 0, 0, 0.565271, 0, 0, 0, 1, 0, 0.584259, -18.2188 )
+shape = SubResource( 13 )
+
+[connection signal="pressed" from="Menu/Control/VBoxContainer/Play" to="Menu" method="_on_Play_pressed"]
+[connection signal="pressed" from="Menu/Control/VBoxContainer/Score" to="Menu" method="_on_Score_pressed"]
+[connection signal="pressed" from="Menu/Control/VBoxContainer/Quit" to="Menu" method="_on_Quit_pressed"]
+[connection signal="pressed" from="Menu/Score/Back" to="Menu" method="_on_Back_pressed"]
+[connection signal="body_entered" from="DeathZone" to="DeathZone" method="_on_DeathZone_body_entered"]
+[connection signal="dead" from="DeathZone" to="Menu" method="_on_DeathZone_dead"]
+[connection signal="body_entered" from="VictoryZone" to="VictoryZone" method="_on_VictoryZone_body_entered"]
+[connection signal="win" from="VictoryZone" to="Menu" method="_on_VictoryZone_win"]
+[connection signal="win" from="VictoryZone" to="Player" method="_on_VictoryZone_win"]
